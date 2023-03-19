@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Todo list</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://kit.fontawesome.com/76a388af8b.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div id="newtask">
+                <input type="text" id="taskinfo" placeholder="Enter Something...">
+                <button id="add">Add</button>
+            </div>
+            <div id="tasklist"></div>
+        </div>
+
+
+        <script>
+            let todoele=document.getElementById("taskinfo")
+            let tasklist=document.getElementById("tasklist")
+
+            document.getElementById("add").onclick =function(){
+            if(todoele.value.length==0){
+                    alert("Enter a task details")
+                }
+            else{
+                tasklist.innerHTML=tasklist.innerHTML+`
+                <div class="task">
+                    <span id="work">${todoele.value}</span>
+                    <button class="del"><i class="far fa-trash-alt"></i></button>
+                </div>`
+        
+                let alltasks=document.querySelectorAll(".del")
+                    for( i=0;i<alltasks.length;i++){
+                        alltasks[i].onclick = function(){
+                        this.parentNode.remove()
+                    }
+                }
+                    todoele.value=""
+            }
+        }
+        </script>
+    </body>
+</html>
